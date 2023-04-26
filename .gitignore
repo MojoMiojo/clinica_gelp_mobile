@@ -1,0 +1,42 @@
+
+.dart_tool/package_config.json
+
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# flutter
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# android
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+
+# ios
+/ios/build/*
+./ios/build/
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+android/local.properties
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/Generated.xcconfig
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+macos/Flutter/ephemeral/Flutter-Generated.xcconfig
+macos/Flutter/ephemeral/flutter_export_environment.sh
+.metadata
