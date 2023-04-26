@@ -6,6 +6,10 @@
 *.pyc
 *.swp
 .DS_Store
+*.iml
+*.ipr
+*.iws
+.idea/
 
 # flutter
 **/doc/api/
@@ -18,10 +22,12 @@
 .pub/
 /build/
 /coverage/
+
 # android
 /android/app/debug/
 /android/app/profile/
 /android/app/release/
+
 # ios
 /ios/build/*
 ./ios/build/
@@ -33,3 +39,4 @@ ios/Runner/GeneratedPluginRegistrant.h
 ios/Runner/GeneratedPluginRegistrant.m
 macos/Flutter/ephemeral/Flutter-Generated.xcconfig
 macos/Flutter/ephemeral/flutter_export_environment.sh
+.metadata
