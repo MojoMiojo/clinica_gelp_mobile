@@ -1,0 +1,27 @@
+
+.dart_tool/package_config.json
+
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+
+# flutter
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+/coverage/
+# android
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+# ios
+/ios/build/*
+./ios/build/
