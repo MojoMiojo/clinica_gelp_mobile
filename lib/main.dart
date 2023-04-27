@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gelp_questionnaire/presentation/pages/my_home/my_home_page.dart';
+import 'package:gelp_questionnaire/presentation/pages/questions/question_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const QuestionPage(),
     );
   }
 }
