@@ -11,10 +11,11 @@ class ImageAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
+      centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Image.asset(
-          "lib/presentation/assets/images/una_logo.png",
+          "assets/images/una_logo.png",
           fit: BoxFit.cover,
         ),
       ),
