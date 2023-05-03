@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gelp_questionnaire/presentation/Utils/text_styles.dart';
+import 'package:gelp_questionnaire/presentation/widgets/custom_button_widget.dart';
 import 'package:gelp_questionnaire/presentation/widgets/image_app_bar_widget.dart';
 import 'package:gelp_questionnaire/presentation/widgets/progress_bar_widget.dart';
 import 'package:gelp_questionnaire/presentation/widgets/radius_field_widget.dart';
@@ -12,6 +13,14 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  final questionList = [
+    '1 - Um',
+    '2 - Dois',
+    '3 - Três',
+    '4 - Quatro',
+    '+5 - Cinco ou Mais',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,48 +28,69 @@ class _QuestionPageState extends State<QuestionPage> {
       appBar: const ImageAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Flexible(
-                child: ProgressBar(),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                "Quantos aparelhos com acesso a internet você possui em sua residência?",
-                style: primaryTitle.style(),
-                maxLines: 3,
-              ),
-              const SizedBox(height: 30),
-              Text(
-                "Obs: Isto inclui aparalhos celulares, tablets, computadores, notebooks, video games, televisões, smart watches, etc.",
-                style: primarySubtitle.style(),
-              ),
-              const SizedBox(height: 30),
-              const RadiusField(text: '1 - Um'),
-              const SizedBox(height: 16),
-              const RadiusField(text: '2 - Dois'),
-              const SizedBox(height: 16),
-              const RadiusField(text: '3 - Três'),
-              const SizedBox(height: 16),
-              const RadiusField(text: '4 - Quatro'),
-              const SizedBox(height: 16),
-              const RadiusField(text: '5+ - Cinco ou Mais'),
-              const SizedBox(height: 32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: const [
-                  Text('Botão'),
-                  Text('Botão'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const ProgressBar(),
+            const SizedBox(height: 24),
+            Text(
+              "Quantos aparelhos com acesso a internet você possui em sua residência?",
+              style: primaryTitle.style(),
+              maxLines: 3,
+            ),
+            const SizedBox(height: 24),
+            Text(
+              "Obs: Isto inclui aparalhos celulares, tablets, computadores, notebooks, video games, televisões, smart watches, etc.",
+              style: primarySubtitle.style(),
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: questionList
+                        .map(
+                          (question) => Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: RadiusField(text: question),
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ],
               ),
-              const SizedBox(height: 32),
-            ],
-          ),
+            ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Flexible(
+                  child: CustomButton(
+                    text: 'Voltar',
+                    buttonColor: Colors.white,
+                    borderColor: Colors.red,
+                    borderWidth: 2,
+                    textStyle: primaryButton.customColored(Colors.black),
+                    onTap: () {},
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Flexible(
+                  child: CustomButton(
+                    text: 'Próximo',
+                    buttonColor: Colors.red,
+                    textStyle: primaryButton.style(),
+                    onTap: () {},
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
+          ],
         ),
       ),
     );

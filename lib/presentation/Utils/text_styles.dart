@@ -25,6 +25,16 @@ class GelpTextStyles {
       color: color,
     );
   }
+
+  TextStyle customColored(Color color) {
+    return TextStyle(
+      fontFamily: fontFamily,
+      decoration: textDecoration,
+      fontWeight: fontWeight,
+      fontSize: fontSize,
+      color: color,
+    );
+  }
 }
 
 GelpTextStyles primaryTitle = GelpTextStyles(
@@ -41,4 +51,12 @@ GelpTextStyles primarySubtitle = GelpTextStyles(
   fontWeight: FontWeight.w400,
   fontSize: 14,
   color: Colors.grey.withOpacity(0.9),
+);
+
+GelpTextStyles primaryButton = GelpTextStyles(
+  fontFamily: 'Roboto',
+  textDecoration: TextDecoration.none,
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  color: Colors.white,
 );

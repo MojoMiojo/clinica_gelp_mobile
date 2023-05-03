@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gelp_questionnaire/presentation/pages/my_home/my_home_page.dart';
 import 'package:gelp_questionnaire/presentation/pages/questions/question_page.dart';
 
 void main() {
