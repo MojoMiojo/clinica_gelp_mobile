@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gelp_questionnaire/presentation/Utils/text_styles.dart';
-import 'package:gelp_questionnaire/presentation/widgets/custom_button_widget.dart';
-import 'package:gelp_questionnaire/presentation/widgets/image_app_bar_widget.dart';
-import 'package:gelp_questionnaire/presentation/widgets/progress_bar_widget.dart';
-import 'package:gelp_questionnaire/presentation/widgets/radius_field_widget.dart';
+
+import '../../../utils/utils.dart';
+import '../../widgets/widgets.dart';
 
 class QuestionPage extends StatefulWidget {
   const QuestionPage({super.key});
