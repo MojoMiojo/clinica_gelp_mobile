@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gelp_questionnaire/presentation/pages/questions/question_page.dart';
+import 'package:gelp_questionnaire/src/presentation/pages/questions/question_page.dart';
+
 
 void main() {
   runApp(const MyApp());

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gelp_questionnaire/presentation/Utils/text_styles.dart';
-import 'package:gelp_questionnaire/presentation/widgets/custom_button_widget.dart';
-import 'package:gelp_questionnaire/presentation/widgets/image_app_bar_widget.dart';
-import 'package:gelp_questionnaire/presentation/widgets/progress_bar_widget.dart';
-import 'package:gelp_questionnaire/presentation/widgets/radius_field_widget.dart';
+import 'package:gelp_questionnaire/src/presentation/Utils/text_styles.dart';
+import 'package:gelp_questionnaire/src/presentation/widgets/custom_button_widget.dart';
+import 'package:gelp_questionnaire/src/presentation/widgets/image_app_bar_widget.dart';
+import 'package:gelp_questionnaire/src/presentation/widgets/progress_bar_widget.dart';
+import 'package:gelp_questionnaire/src/presentation/widgets/radius_field_widget.dart';
 
 class QuestionPage extends StatefulWidget {
   const QuestionPage({super.key});
