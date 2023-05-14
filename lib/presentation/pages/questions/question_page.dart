@@ -23,7 +23,7 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const ImageAppBar(),
+      appBar: const GelpImageAppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

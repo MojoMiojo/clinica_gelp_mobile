@@ -1,2 +1,2 @@
-export 'image_app_bar_widget.dart';
-export 'image_app_bar_widget_style.dart';
+export 'gelp_image_app_bar.dart';
+export 'gelp_image_app_bar_style.dart';

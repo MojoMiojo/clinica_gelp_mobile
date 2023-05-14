@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:gelp_questionnaire/utils/text_styles.dart';
 
 class GelpCustomButtonStyle {
@@ -36,4 +37,22 @@ class GelpCustomButtonStyle {
     this.padding = const EdgeInsets.all(8),
     this.textStyle = GelpTextStyles.kSecondaryButton,
   });
+
+  GelpCustomButtonStyle copyWith({
+    Color? buttonColor,
+    Color? borderColor,
+    double? borderRadius,
+    double? borderWidth,
+    EdgeInsets? padding,
+    TextStyle? textStyle,
+  }) {
+    return GelpCustomButtonStyle(
+      buttonColor: buttonColor ?? this.buttonColor,
+      borderColor: borderColor ?? this.borderColor,
+      borderRadius: borderRadius ?? this.borderRadius,
+      borderWidth: borderWidth ?? this.borderWidth,
+      padding: padding ?? this.padding,
+      textStyle: textStyle ?? this.textStyle,
+    );
+  }
 }
