@@ -33,15 +33,15 @@ class _QuestionPageState extends State<QuestionPage> {
           children: [
             const ProgressBar(),
             const SizedBox(height: 24),
-            Text(
+            const Text(
               "Quantos aparelhos com acesso a internet você possui em sua residência?",
-              style: primaryTitle.style(),
+              style: GelpTextStyles.kPrimaryTitle,
               maxLines: 3,
             ),
             const SizedBox(height: 24),
-            Text(
+            const Text(
               "Obs: Isto inclui aparalhos celulares, tablets, computadores, notebooks, video games, televisões, smart watches, etc.",
-              style: primarySubtitle.style(),
+              style: GelpTextStyles.kPrimaryTitle,
             ),
             const SizedBox(height: 30),
             Expanded(
@@ -67,21 +67,17 @@ class _QuestionPageState extends State<QuestionPage> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Flexible(
-                  child: CustomButton(
+                  child: GelpCustomButton(
                     text: 'Voltar',
-                    buttonColor: Colors.white,
-                    borderColor: Colors.red,
-                    borderWidth: 2,
-                    textStyle: primaryButton.customColored(Colors.black),
+                    style: const GelpCustomButtonStyle.secondary(),
                     onTap: () {},
                   ),
                 ),
                 const SizedBox(width: 12),
                 Flexible(
-                  child: CustomButton(
+                  child: GelpCustomButton(
                     text: 'Próximo',
-                    buttonColor: Colors.red,
-                    textStyle: primaryButton.style(),
+                    style: const GelpCustomButtonStyle.primary(),
                     onTap: () {},
                   ),
                 ),

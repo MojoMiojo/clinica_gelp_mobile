@@ -2,61 +2,47 @@
 import 'package:flutter/material.dart';
 
 class GelpTextStyles {
-  TextDecoration textDecoration;
-  FontWeight fontWeight;
-  String fontFamily;
-  double fontSize;
-  Color color;
+  final TextStyle primaryTitles;
+  final TextStyle primarySubtitle;
+  final TextStyle primaryButton;
+  final TextStyle secondaryButton;
 
-  GelpTextStyles({
-    required this.textDecoration,
-    required this.fontWeight,
-    required this.fontFamily,
-    required this.fontSize,
-    required this.color,
+  const GelpTextStyles({
+    required this.primaryTitles,
+    required this.primarySubtitle,
+    required this.primaryButton,
+    required this.secondaryButton,
   });
 
-  TextStyle style() {
-    return TextStyle(
-      fontFamily: fontFamily,
-      decoration: textDecoration,
-      fontWeight: fontWeight,
-      fontSize: fontSize,
-      color: color,
-    );
-  }
+  static const kPrimaryTitle = TextStyle(
+    fontFamily: 'Roboto',
+    decoration: TextDecoration.none,
+    fontWeight: FontWeight.w600,
+    fontSize: 20,
+    color: Colors.black,
+  );
 
-  TextStyle customColored(Color color) {
-    return TextStyle(
-      fontFamily: fontFamily,
-      decoration: textDecoration,
-      fontWeight: fontWeight,
-      fontSize: fontSize,
-      color: color,
-    );
-  }
+  static const kPrimarySubtitle = TextStyle(
+    fontFamily: 'Roboto',
+    decoration: TextDecoration.none,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    color: Colors.grey,
+  );
+
+  static const kPrimaryButton = TextStyle(
+    fontFamily: 'Roboto',
+    decoration: TextDecoration.none,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    color: Colors.white,
+  );
+
+  static const kSecondaryButton = TextStyle(
+    fontFamily: 'Roboto',
+    decoration: TextDecoration.none,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    color: Colors.white,
+  );
 }
-
-GelpTextStyles primaryTitle = GelpTextStyles(
-  fontFamily: 'Roboto',
-  textDecoration: TextDecoration.none,
-  fontWeight: FontWeight.w600,
-  fontSize: 20,
-  color: Colors.black.withOpacity(0.9),
-);
-
-GelpTextStyles primarySubtitle = GelpTextStyles(
-  fontFamily: 'Roboto',
-  textDecoration: TextDecoration.none,
-  fontWeight: FontWeight.w400,
-  fontSize: 14,
-  color: Colors.grey.withOpacity(0.9),
-);
-
-GelpTextStyles primaryButton = GelpTextStyles(
-  fontFamily: 'Roboto',
-  textDecoration: TextDecoration.none,
-  fontWeight: FontWeight.w400,
-  fontSize: 14,
-  color: Colors.white,
-);
