@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gelp_questionnaire/src/presentation/Utils/text_styles.dart';
+import 'package:gelp_questionnaire/src/presentation/pages/questions/questions_page_bloc.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/custom_button_widget.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/image_app_bar_widget.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/progress_bar_widget.dart';
@@ -13,16 +14,13 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
-  final questionList = [
-    '1 - Um',
-    '2 - Dois',
-    '3 - Três',
-    '4 - Quatro',
-    '+5 - Cinco ou Mais',
-  ];
+  final questionPageBloc = QuestionPageBloc();
+  final questionList = ['1 - Um', '2 - Dois', '3 - Três', '4 - Quatro ou Mais'];
 
   @override
   Widget build(BuildContext context) {
+    final questions = questionPageBloc.getEconomicQuestions();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const ImageAppBar(),
@@ -36,7 +34,7 @@ class _QuestionPageState extends State<QuestionPage> {
             const ProgressBar(),
             const SizedBox(height: 24),
             Text(
-              "Quantos aparelhos com acesso a internet você possui em sua residência?",
+              questions.first.question,
               style: primaryTitle.style(),
               maxLines: 3,
             ),
