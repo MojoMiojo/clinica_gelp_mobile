@@ -31,7 +31,9 @@ class _QuestionPageState extends State<QuestionPage> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const ProgressBar(),
+            const GelpProgressBar(
+              percentage: 0.5,
+            ),
             const SizedBox(height: 24),
             const Text(
               "Quantos aparelhos com acesso a internet você possui em sua residência?",

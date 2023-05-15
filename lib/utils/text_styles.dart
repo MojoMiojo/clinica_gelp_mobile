@@ -43,6 +43,6 @@ class GelpTextStyles {
     decoration: TextDecoration.none,
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: Colors.white,
+    color: Colors.black,
   );
 }

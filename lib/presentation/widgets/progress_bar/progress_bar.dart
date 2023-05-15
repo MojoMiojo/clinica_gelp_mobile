@@ -1,2 +1,2 @@
-export 'progress_bar_widget.dart';
-export 'progress_bar_widget_style.dart';
+export 'gelp_progress_bar.dart';
+export 'gelp_progress_bar_style.dart';
