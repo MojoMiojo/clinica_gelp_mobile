@@ -6,7 +6,10 @@ import 'package:gelp_questionnaire/src/domain/socioeconomic/model/socioeconomic_
 import 'package:gelp_questionnaire/src/domain/socioeconomic/repository/socioeconomic_repository.dart';
 
 class SocioeconomicImpl implements SocioeconomicRepository {
-  final _socioEconomicDatasource = SocioeconomicDataSource();
+
+  final SocioeconomicDataSource _socioEconomicDatasource;
+  
+  SocioeconomicImpl(this._socioEconomicDatasource);
 
   @override
   List<SocioeconomicQuestionModel> getSocioeconomicQuestions() {

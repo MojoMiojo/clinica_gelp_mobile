@@ -21,6 +21,9 @@
 .pub-cache/
 .pub/
 /build/
+/web/
+/windows/
+/linux/
 /coverage/
 
 # android
