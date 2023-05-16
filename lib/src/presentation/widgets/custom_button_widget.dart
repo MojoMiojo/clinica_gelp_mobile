@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
   final Color buttonColor;
   final Color borderColor;
   final TextStyle? textStyle;
-  final Function onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,10 @@ class CustomButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         hoverColor: Colors.black,
-        onTap: onTap(),
+        onTap: () {
+          print("dentro");
+          onTap();
+        },
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
