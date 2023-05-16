@@ -25,10 +25,8 @@ class GelpCustomButton extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             color: style.buttonColor,
-            borderRadius: BorderRadius.all(
-              Radius.circular(
-                style.borderRadius,
-              ),
+            borderRadius: BorderRadius.circular(
+              style.borderRadius,
             ),
             border: Border.all(
               width: style.borderWidth,

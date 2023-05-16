@@ -56,7 +56,11 @@ class _QuestionPageState extends State<QuestionPage> {
                         .map(
                           (question) => Padding(
                             padding: const EdgeInsets.only(bottom: 16),
-                            child: RadiusField(text: question),
+                            child: GelpRadiusField(
+                              text: question,
+                              index: 1,
+                              callback: (value) {},
+                            ),
                           ),
                         )
                         .toList(),
