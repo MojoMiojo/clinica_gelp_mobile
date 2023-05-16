@@ -5,6 +5,7 @@ import 'package:gelp_questionnaire/src/presentation/widgets/custom_button_widget
 import 'package:gelp_questionnaire/src/presentation/widgets/image_app_bar_widget.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/progress_bar_widget.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/radius_field_widget.dart';
+import 'package:get_it/get_it.dart';
 
 class QuestionPage extends StatefulWidget {
   const QuestionPage({super.key});
@@ -14,7 +15,7 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
-  final questionPageBloc = QuestionPageBloc();
+  final questionPageBloc = QuestionPageBloc(GetIt.I());
   final questionList = ['1 - Um', '2 - Dois', '3 - Três', '4 - Quatro ou Mais'];
 
   @override
