@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gelp_questionnaire/presentation/pages/questions/question_page.dart';
+import 'package:gelp_questionnaire/src/di/di_setup.dart';
+import 'package:gelp_questionnaire/src/presentation/pages/questions/question_page.dart';
 
 void main() {
+  final setupInjections = DISetup();
+
+  setupInjections.inject();
   runApp(const MyApp());
 }
 
