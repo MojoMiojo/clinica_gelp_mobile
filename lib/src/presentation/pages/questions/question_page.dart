@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gelp_questionnaire/src/presentation/Utils/text_styles.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/questions/question_state.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/questions/questions_cubit.dart';
-import 'package:gelp_questionnaire/src/presentation/widgets/custom_button_widget.dart';
-import 'package:gelp_questionnaire/src/presentation/widgets/image_app_bar_widget.dart';
-import 'package:gelp_questionnaire/src/presentation/widgets/progress_bar_widget.dart';
-import 'package:gelp_questionnaire/src/presentation/widgets/radius_field_widget.dart';
+import 'package:gelp_questionnaire/src/utils/text_styles.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../widgets/widgets.dart';
 
 class QuestionPage extends StatefulWidget {
   const QuestionPage({super.key});
@@ -31,7 +29,7 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const ImageAppBar(),
+      appBar: const GelpImageAppBar(),
       body: BlocBuilder<QuestionsCubit, QuestionsState>(
         bloc: _questionCubit,
         builder: (context, state) {
@@ -43,17 +41,19 @@ class _QuestionPageState extends State<QuestionPage> {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const ProgressBar(),
-                  const SizedBox(height: 24),
-                  Text(
-                    state.questions.first.question,
-                    style: primaryTitle.style(),
-                    maxLines: 3,
+                  const GelpProgressBar(
+                    percentage: 0.5,
                   ),
                   const SizedBox(height: 24),
                   Text(
+                    state.questions.first.question,
+                    style: GelpTextStyles.kPrimaryTitle,
+                    maxLines: 3,
+                  ),
+                  const SizedBox(height: 24),
+                  const Text(
                     "Obs: Isto inclui aparalhos celulares, tablets, computadores, notebooks, video games, televisões, smart watches, etc.",
-                    style: primarySubtitle.style(),
+                    style: GelpTextStyles.kPrimarySubtitle,
                   ),
                   const SizedBox(height: 30),
                   Expanded(
@@ -66,7 +66,11 @@ class _QuestionPageState extends State<QuestionPage> {
                               .map(
                                 (question) => Padding(
                                   padding: const EdgeInsets.only(bottom: 16),
-                                  child: RadiusField(text: question),
+                                  child: GelpRadiusField(
+                                    text: question,
+                                    index: 1,
+                                    callback: (value) {},
+                                  ),
                                 ),
                               )
                               .toList(),
@@ -79,21 +83,17 @@ class _QuestionPageState extends State<QuestionPage> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Flexible(
-                        child: CustomButton(
+                        child: GelpCustomButton(
                           text: 'Voltar',
-                          buttonColor: Colors.white,
-                          borderColor: Colors.red,
-                          borderWidth: 2,
-                          textStyle: primaryButton.customColored(Colors.black),
+                          style: const GelpCustomButtonStyle.secondary(),
                           onTap: () {},
                         ),
                       ),
                       const SizedBox(width: 12),
                       Flexible(
-                        child: CustomButton(
+                        child: GelpCustomButton(
                           text: 'Próximo',
-                          buttonColor: Colors.red,
-                          textStyle: primaryButton.style(),
+                          style: const GelpCustomButtonStyle.primary(),
                           onTap: () {},
                         ),
                       ),

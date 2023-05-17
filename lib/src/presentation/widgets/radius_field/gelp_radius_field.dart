@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:gelp_questionnaire/presentation/widgets/radius_field/radius_field.dart';
+import '../widgets.dart';
 
 class GelpRadiusField extends StatefulWidget {
   final String text;
