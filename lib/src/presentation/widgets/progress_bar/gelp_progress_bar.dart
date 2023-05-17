@@ -9,7 +9,7 @@ class GelpProgressBar extends StatefulWidget {
 
   const GelpProgressBar({
     Key? key,
-    required this.percentage,
+    this.percentage = 0,
     this.style = const GelpProgressBarStyle(),
   }) : super(key: key);
 
@@ -39,7 +39,7 @@ class _GelpProgressBarState extends State<GelpProgressBar> {
               Row(
                 children: [
                   AnimatedContainer(
-                    key: const Key("salus_animated_progress_bar"),
+                    key: const Key("gelp_animated_progress_bar"),
                     duration: Duration(
                       milliseconds: widget.style.duration,
                     ),
