@@ -41,12 +41,12 @@ class _QuestionPageState extends State<QuestionPage> {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const GelpProgressBar(
-                    percentage: 0.5,
+                  GelpProgressBar(
+                    percentage: state.progressPercentage,
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    state.questions.first.question,
+                    state.actualQuestion.question,
                     style: GelpTextStyles.kPrimaryTitle,
                     maxLines: 3,
                   ),
@@ -94,7 +94,9 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: GelpCustomButton(
                           text: 'Próximo',
                           style: const GelpCustomButtonStyle.primary(),
-                          onTap: () {},
+                          onTap: () {
+                            _questionCubit.goToNextQuestion();
+                          },
                         ),
                       ),
                     ],

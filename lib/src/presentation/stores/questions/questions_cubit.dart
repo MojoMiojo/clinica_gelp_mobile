@@ -7,18 +7,37 @@ import 'package:gelp_questionnaire/src/presentation/stores/questions/question_st
 class QuestionsCubit extends Cubit<QuestionsState> {
   final getIt = GetIt.I;
   final GetSocioeconomicQuestionsUseCase _getEconomicQuestionsUseCase;
+  late List<SocioeconomicQuestionModel> _listOfQuestions;
+  late double _progressPercentage;
+  int _questionIndex = 0;
 
   QuestionsCubit(
     this._getEconomicQuestionsUseCase,
   ) : super(QuestionsInitialState());
 
   void init() {
+    _progressPercentage = 0;
+    _listOfQuestions = _getEconomicQuestions();
+
     Future.delayed(const Duration(seconds: 2), () {
-      emit(QuestionsLoadedState(_getEconomicQuestions()));
+      _emitQuestion();
     });
   }
 
   List<SocioeconomicQuestionModel> _getEconomicQuestions() {
     return _getEconomicQuestionsUseCase();
+  }
+
+  void goToNextQuestion() {
+    if (_questionIndex <= _listOfQuestions.length) {
+      _questionIndex++;
+    }
+  }
+
+  void _emitQuestion() {
+    emit(QuestionsLoadedState(
+      _listOfQuestions[_questionIndex],
+      _progressPercentage,
+    ));
   }
 }
