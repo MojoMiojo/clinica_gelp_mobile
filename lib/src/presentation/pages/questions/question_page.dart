@@ -86,7 +86,9 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: GelpCustomButton(
                           text: 'Voltar',
                           style: const GelpCustomButtonStyle.secondary(),
-                          onTap: () {},
+                          onTap: () {
+                            _questionCubit.goToPreviousQuestion();
+                          },
                         ),
                       ),
                       const SizedBox(width: 12),
