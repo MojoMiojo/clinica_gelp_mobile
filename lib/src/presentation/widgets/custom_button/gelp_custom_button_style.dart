@@ -25,7 +25,7 @@ class GelpCustomButtonStyle {
     this.borderColor = Colors.transparent,
     this.borderRadius = 8,
     this.borderWidth = 0,
-    this.padding = const EdgeInsets.all(8),
+    this.padding = const EdgeInsets.all(12),
     this.textStyle = GelpTextStyles.kPrimaryButton,
   });
 
@@ -34,8 +34,17 @@ class GelpCustomButtonStyle {
     this.borderColor = Colors.red,
     this.borderRadius = 8,
     this.borderWidth = 2,
-    this.padding = const EdgeInsets.all(8),
+    this.padding = const EdgeInsets.all(12),
     this.textStyle = GelpTextStyles.kSecondaryButton,
+  });
+
+  const GelpCustomButtonStyle.disabled({
+    this.buttonColor = Colors.grey,
+    this.borderColor = Colors.grey,
+    this.borderRadius = 8,
+    this.borderWidth = 2,
+    this.padding = const EdgeInsets.all(12),
+    this.textStyle = GelpTextStyles.kPrimaryButton,
   });
 
   GelpCustomButtonStyle copyWith({

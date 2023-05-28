@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/questions/question_state.dart';
 
 class QuestionsCubit extends Cubit<QuestionsState> {
-  late double _progressPercentage;
-  late List<SocioeconomicQuestionModel> _listOfQuestions;
-  late int _listLength;
   final GetSocioeconomicQuestionsUseCase _getEconomicQuestionsUseCase;
+
+  late List<SocioeconomicQuestionModel> _listOfQuestions;
+  late Map<int, Answer> _userAnswers;
+  late double _progressPercentage;
+  late int _listLength;
 
   int _questionIndex = 0;
 
@@ -19,6 +21,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     _progressPercentage = 0;
     _listOfQuestions = _getEconomicQuestions();
     _listLength = _listOfQuestions.length;
+    _userAnswers = {};
 
     Future.delayed(const Duration(seconds: 2), () {
       _emitQuestion();
@@ -31,9 +34,14 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
   void _emitQuestion() {
     if (_questionIndex < _listLength) {
+      final question = _listOfQuestions[_questionIndex];
       emit(QuestionsLoadedState(
-        _listOfQuestions[_questionIndex],
+        question,
+        question.answers,
         _progressPercentage,
+        _userAnswers[_questionIndex],
+        _questionIndex == _listLength - 1 ? 'Finalizar' : 'Próximo',
+        _questionIndex == 0,
       ));
     } else {
       emit(QuestionsFinishedState(_progressPercentage));
@@ -60,5 +68,18 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
       _emitQuestion();
     }
+  }
+
+  void setAnswer(Answer answer) {
+    _userAnswers[_questionIndex] = answer;
+    _emitQuestion();
+  }
+
+  bool isAnswerSelected(Answer answer) {
+    return answer == _userAnswers[_questionIndex];
+  }
+
+  bool isNextButtonEnabled() {
+    return _userAnswers[_questionIndex] != null;
   }
 }

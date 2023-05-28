@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:gelp_questionnaire/src/presentation/utils/gelp_text_styles.dart';
-import '';
 
 class GelpRadiusFieldStyle {
   final Color selectedColor;
