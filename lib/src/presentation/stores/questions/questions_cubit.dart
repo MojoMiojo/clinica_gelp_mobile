@@ -40,6 +40,8 @@ class QuestionsCubit extends Cubit<QuestionsState> {
         question.answers,
         _progressPercentage,
         _userAnswers[_questionIndex],
+        _questionIndex == _listLength - 1 ? 'Finalizar' : 'Próximo',
+        _questionIndex == 0,
       ));
     } else {
       emit(QuestionsFinishedState(_progressPercentage));

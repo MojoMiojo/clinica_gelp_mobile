@@ -10,12 +10,16 @@ class QuestionsLoadedState implements QuestionsState {
   final List<Answer> answers;
   final double progressPercentage;
   final Answer? answer;
+  final String nextButtonText;
+  final bool isFirstQuestion;
 
   QuestionsLoadedState(
     this.actualQuestion,
     this.answers,
     this.progressPercentage,
     this.answer,
+    this.nextButtonText,
+    this.isFirstQuestion,
   );
 }
 

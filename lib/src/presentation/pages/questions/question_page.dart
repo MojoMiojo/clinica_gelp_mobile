@@ -28,6 +28,7 @@ class _QuestionPageState extends State<QuestionPage> {
 
   @override
   Widget build(BuildContext context) {
+    const horizontalPadding = 16.0;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const GelpImageAppBar(),
@@ -36,12 +37,14 @@ class _QuestionPageState extends State<QuestionPage> {
         builder: (context, state) {
           if (state is QuestionsLoadedState) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 24),
                   GelpProgressBar(
                     percentage: state.progressPercentage,
                   ),
@@ -49,57 +52,56 @@ class _QuestionPageState extends State<QuestionPage> {
                   Text(
                     state.actualQuestion.question,
                     style: GelpTextStyles.kPrimaryTitle,
-                    maxLines: 3,
+                    maxLines: 4,
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 8),
                   const Text(
                     "Obs: Isto inclui aparalhos celulares, tablets, computadores, notebooks, video games, televisões, smart watches, etc.",
                     style: GelpTextStyles.kPrimarySubtitle,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 24),
                   Expanded(
                     child: ListView(
                       scrollDirection: Axis.vertical,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: state.answers
-                              .map(
-                                (answer) => Padding(
-                                  padding: const EdgeInsets.only(bottom: 16),
-                                  child: GelpRadiusField(
-                                    text: answer.answer,
-                                    isSelected:
-                                        _questionCubit.isAnswerSelected(answer),
-                                    index: answer.id,
-                                    callback: (id) {
-                                      _questionCubit.setAnswer(answer);
-                                    },
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      ],
+                      physics: const BouncingScrollPhysics(),
+                      children: state.answers
+                          .map(
+                            (answer) => Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: GelpRadiusField(
+                                text: answer.answer,
+                                isSelected:
+                                    _questionCubit.isAnswerSelected(answer),
+                                index: answer.id,
+                                callback: (id) {
+                                  _questionCubit.setAnswer(answer);
+                                },
+                              ),
+                            ),
+                          )
+                          .toList(),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  // const SizedBox(height: 16),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Flexible(
-                        child: GelpCustomButton(
-                          text: 'Voltar',
-                          style: const GelpCustomButtonStyle.secondary(),
-                          onTap: () {
-                            _questionCubit.goToPreviousQuestion();
-                          },
+                      if (!state.isFirstQuestion)
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12.0),
+                            child: GelpCustomButton(
+                              text: 'Voltar',
+                              style: const GelpCustomButtonStyle.secondary(),
+                              onTap: () {
+                                _questionCubit.goToPreviousQuestion();
+                              },
+                            ),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
                       Flexible(
                         child: GelpCustomButton(
-                          text: 'Próximo',
+                          text: state.nextButtonText,
                           style: _questionCubit.isNextButtonEnabled()
                               ? const GelpCustomButtonStyle.primary()
                               : const GelpCustomButtonStyle.disabled(),
@@ -118,10 +120,12 @@ class _QuestionPageState extends State<QuestionPage> {
             );
           } else if (state is QuestionsFinishedState) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  const SizedBox(height: 24),
                   GelpProgressBar(
                     percentage: state.progressPercentage,
                   ),
@@ -135,16 +139,17 @@ class _QuestionPageState extends State<QuestionPage> {
                       BlendMode.srcIn,
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
                   const Text(
                     "Questionário finalizado",
                     style: GelpTextStyles.kPrimaryTitle,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   const Text(
                     "Obrigado pela participação!",
                     style: GelpTextStyles.kPrimarySubtitle,
                   ),
+                  const SizedBox(height: 24),
                   const Spacer(),
                 ],
               ),

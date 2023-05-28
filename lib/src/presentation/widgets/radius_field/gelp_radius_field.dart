@@ -38,15 +38,16 @@ class _GelpRadiusFieldState extends State<GelpRadiusField> {
           width: 1,
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            InkWell(
-              onTap: () {
-                widget.callback.call(widget.index);
-              },
-              child: Container(
+      child: InkWell(
+        splashColor: widget.style.selectedColor,
+        onTap: () {
+          widget.callback.call(widget.index);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Container(
                 height: widget.style.radioSize,
                 width: widget.style.radioSize,
                 decoration: BoxDecoration(
@@ -68,13 +69,13 @@ class _GelpRadiusFieldState extends State<GelpRadiusField> {
                       )
                     : const SizedBox.shrink(),
               ),
-            ),
-            const SizedBox(width: 12),
-            Text(
-              widget.text,
-              style: widget.style.textStyle,
-            ),
-          ],
+              const SizedBox(width: 12),
+              Text(
+                widget.text,
+                style: widget.style.textStyle,
+              ),
+            ],
+          ),
         ),
       ),
     );
