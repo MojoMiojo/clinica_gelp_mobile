@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ColorsUtils {
+class GelpColors {
   static const primary = Colors.red;
 }

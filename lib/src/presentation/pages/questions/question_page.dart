@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gelp_questionnaire/src/presentation/utils/gelp_colors.dart';
+import 'package:gelp_questionnaire/src/presentation/utils/gelp_images.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/questions/question_state.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/questions/questions_cubit.dart';
-import 'package:gelp_questionnaire/src/utils/text_styles.dart';
+import 'package:gelp_questionnaire/src/presentation/utils/gelp_text_styles.dart';
 import 'package:get_it/get_it.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/widgets.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -107,10 +109,46 @@ class _QuestionPageState extends State<QuestionPage> {
                 ],
               ),
             );
+          } else if (state is QuestionsFinishedState) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  GelpProgressBar(
+                    percentage: state.progressPercentage,
+                  ),
+                  const Spacer(),
+                  SvgPicture.asset(
+                    GelpConstants.successFinishedSVG,
+                    height: 72,
+                    width: 72,
+                    colorFilter: const ColorFilter.mode(
+                      GelpColors.primary,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  const Text(
+                    "Questionário finalizado",
+                    style: GelpTextStyles.kPrimaryTitle,
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    "Obrigado pela participação!",
+                    style: GelpTextStyles.kPrimarySubtitle,
+                  ),
+                  const Spacer(),
+                ],
+              ),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.red,
+              ),
+            );
           }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
         },
       ),
     );

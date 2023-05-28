@@ -6,6 +6,7 @@ import 'package:gelp_questionnaire/src/presentation/stores/questions/question_st
 class QuestionsCubit extends Cubit<QuestionsState> {
   late double _progressPercentage;
   late List<SocioeconomicQuestionModel> _listOfQuestions;
+  late int _listLength;
   final GetSocioeconomicQuestionsUseCase _getEconomicQuestionsUseCase;
 
   int _questionIndex = 0;
@@ -17,6 +18,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   void init() {
     _progressPercentage = 0;
     _listOfQuestions = _getEconomicQuestions();
+    _listLength = _listOfQuestions.length;
 
     Future.delayed(const Duration(seconds: 2), () {
       _emitQuestion();
@@ -28,16 +30,20 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void _emitQuestion() {
-    emit(QuestionsLoadedState(
-      _listOfQuestions[_questionIndex],
-      _progressPercentage,
-    ));
+    if (_questionIndex < _listLength) {
+      emit(QuestionsLoadedState(
+        _listOfQuestions[_questionIndex],
+        _progressPercentage,
+      ));
+    } else {
+      emit(QuestionsFinishedState(_progressPercentage));
+    }
   }
 
   void goToNextQuestion() {
-    final listLength = _listOfQuestions.length;
+    final listLength = _listLength;
 
-    if (_questionIndex < listLength) {
+    if (_questionIndex <= listLength) {
       _questionIndex++;
       _progressPercentage = _questionIndex / listLength;
 
@@ -46,11 +52,12 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void goToPreviousQuestion() {
-    final listLength = _listOfQuestions.length;
+    final listLength = _listLength;
 
     if (_questionIndex > 0) {
       _questionIndex--;
       _progressPercentage = _questionIndex / listLength;
+
       _emitQuestion();
     }
   }

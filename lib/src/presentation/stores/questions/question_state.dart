@@ -17,4 +17,12 @@ class QuestionsLoadedState implements QuestionsState {
 
 class QuestionsLoadingState implements QuestionsState {}
 
+class QuestionsFinishedState implements QuestionsState {
+  final double progressPercentage;
+
+  QuestionsFinishedState(
+    this.progressPercentage,
+  );
+}
+
 class QuestionsErrorState implements QuestionsState {}
