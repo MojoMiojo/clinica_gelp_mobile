@@ -5,7 +5,7 @@ import '../widgets.dart';
 
 class GelpCustomButton extends StatelessWidget {
   final String text;
-  final Function() onTap;
+  final VoidCallback onTap;
   final GelpCustomButtonStyle style;
 
   const GelpCustomButton({
@@ -21,9 +21,9 @@ class GelpCustomButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         hoverColor: Colors.black,
-        onTap: onTap.call(),
+        onTap: onTap,
         child: Container(
-          width: double.infinity,
+          width: double.maxFinite,
           decoration: BoxDecoration(
             color: style.buttonColor,
             borderRadius: BorderRadius.circular(
