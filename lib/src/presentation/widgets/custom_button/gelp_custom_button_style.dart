@@ -38,6 +38,15 @@ class GelpCustomButtonStyle {
     this.textStyle = GelpTextStyles.kSecondaryButton,
   });
 
+  const GelpCustomButtonStyle.disabled({
+    this.buttonColor = Colors.grey,
+    this.borderColor = Colors.grey,
+    this.borderRadius = 8,
+    this.borderWidth = 0,
+    this.padding = const EdgeInsets.all(8),
+    this.textStyle = GelpTextStyles.kPrimaryButton,
+  });
+
   GelpCustomButtonStyle copyWith({
     Color? buttonColor,
     Color? borderColor,

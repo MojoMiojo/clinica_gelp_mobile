@@ -5,8 +5,8 @@ import '../widgets.dart';
 
 class GelpCustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onTap;
   final GelpCustomButtonStyle style;
+  final VoidCallback? onTap;
 
   const GelpCustomButton({
     Key? key,

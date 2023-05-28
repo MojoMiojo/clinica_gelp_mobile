@@ -7,11 +7,15 @@ class QuestionsInitialState implements QuestionsState {}
 
 class QuestionsLoadedState implements QuestionsState {
   final SocioeconomicQuestionModel actualQuestion;
+  final List<Answer> answers;
   final double progressPercentage;
+  final Answer? answer;
 
   QuestionsLoadedState(
     this.actualQuestion,
+    this.answers,
     this.progressPercentage,
+    this.answer,
   );
 }
 

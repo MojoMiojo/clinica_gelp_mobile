@@ -18,7 +18,6 @@ class QuestionPage extends StatefulWidget {
 
 class _QuestionPageState extends State<QuestionPage> {
   late final QuestionsCubit _questionCubit;
-  final questionList = ['1 - Um', '2 - Dois', '3 - Três', '4 - Quatro ou Mais'];
 
   @override
   void initState() {
@@ -64,14 +63,18 @@ class _QuestionPageState extends State<QuestionPage> {
                       children: [
                         Column(
                           mainAxisSize: MainAxisSize.max,
-                          children: questionList
+                          children: state.answers
                               .map(
-                                (question) => Padding(
+                                (answer) => Padding(
                                   padding: const EdgeInsets.only(bottom: 16),
                                   child: GelpRadiusField(
-                                    text: question,
-                                    index: 1,
-                                    callback: (value) {},
+                                    text: answer.answer,
+                                    isSelected:
+                                        _questionCubit.isAnswerSelected(answer),
+                                    index: answer.id,
+                                    callback: (id) {
+                                      _questionCubit.setAnswer(answer);
+                                    },
                                   ),
                                 ),
                               )
@@ -97,10 +100,14 @@ class _QuestionPageState extends State<QuestionPage> {
                       Flexible(
                         child: GelpCustomButton(
                           text: 'Próximo',
-                          style: const GelpCustomButtonStyle.primary(),
-                          onTap: () {
-                            _questionCubit.goToNextQuestion();
-                          },
+                          style: _questionCubit.isNextButtonEnabled()
+                              ? const GelpCustomButtonStyle.primary()
+                              : const GelpCustomButtonStyle.disabled(),
+                          onTap: _questionCubit.isNextButtonEnabled()
+                              ? () {
+                                  _questionCubit.goToNextQuestion();
+                                }
+                              : null,
                         ),
                       ),
                     ],

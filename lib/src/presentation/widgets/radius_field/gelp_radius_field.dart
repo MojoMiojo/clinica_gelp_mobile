@@ -6,6 +6,7 @@ import '../widgets.dart';
 class GelpRadiusField extends StatefulWidget {
   final String text;
   final int index;
+  final bool isSelected;
   final Function(int) callback;
   final GelpRadiusFieldStyle style;
 
@@ -13,6 +14,7 @@ class GelpRadiusField extends StatefulWidget {
     Key? key,
     required this.text,
     required this.index,
+    required this.isSelected,
     required this.callback,
     this.style = const GelpRadiusFieldStyle(),
   }) : super(key: key);
@@ -22,7 +24,6 @@ class GelpRadiusField extends StatefulWidget {
 }
 
 class _GelpRadiusFieldState extends State<GelpRadiusField> {
-  late bool selected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +32,7 @@ class _GelpRadiusFieldState extends State<GelpRadiusField> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: selected
+          color: widget.isSelected
               ? widget.style.selectedColor
               : widget.style.disabledBorderColor,
           width: 1,
@@ -44,20 +45,17 @@ class _GelpRadiusFieldState extends State<GelpRadiusField> {
             InkWell(
               onTap: () {
                 widget.callback.call(widget.index);
-                setState(() {
-                  selected = !selected;
-                });
               },
               child: Container(
                 height: widget.style.radioSize,
                 width: widget.style.radioSize,
                 decoration: BoxDecoration(
-                  color: selected
+                  color: widget.isSelected
                       ? widget.style.selectedColor
                       : widget.style.disabledRadioColor,
                   borderRadius: BorderRadius.circular(100),
                 ),
-                child: selected
+                child: widget.isSelected
                     ? Center(
                         child: Container(
                           height: widget.style.radioSize / 2,
