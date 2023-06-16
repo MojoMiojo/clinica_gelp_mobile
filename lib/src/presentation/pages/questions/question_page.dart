@@ -79,7 +79,6 @@ class _QuestionPageState extends State<QuestionPage> {
                           .toList(),
                     ),
                   ),
-                  // const SizedBox(height: 16),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -148,6 +147,15 @@ class _QuestionPageState extends State<QuestionPage> {
                   ),
                   const SizedBox(height: 24),
                   const Spacer(),
+                  GelpCustomButton(
+                    text: 'Novo questionário',
+                    onTap: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 32),
                 ],
               ),
             );
