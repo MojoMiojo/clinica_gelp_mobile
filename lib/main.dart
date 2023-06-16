@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gelp_questionnaire/src/di/di_setup.dart';
-import 'package:gelp_questionnaire/src/presentation/pages/questions/question_page.dart';
+import 'package:gelp_questionnaire/src/presentation/pages/home/home_page.dart';
 
 void main() {
   final setupInjections = DISetup();
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const QuestionPage(),
+      home: const HomePage(),
     );
   }
 }

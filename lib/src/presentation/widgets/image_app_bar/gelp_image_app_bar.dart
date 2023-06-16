@@ -4,7 +4,7 @@ import 'package:gelp_questionnaire/src/presentation/utils/gelp_images.dart';
 
 import '../widgets.dart';
 
-class GelpImageAppBar extends StatelessWidget with PreferredSizeWidget {
+class GelpImageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final GelpImageAppBarStyle style;
   @override
   final Size preferredSize;

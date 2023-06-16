@@ -11,7 +11,7 @@ class GelpCustomButton extends StatelessWidget {
   const GelpCustomButton({
     Key? key,
     required this.text,
-    required this.onTap,
+    this.onTap,
     this.style = const GelpCustomButtonStyle.primary(),
   }) : super(key: key);
 
@@ -23,6 +23,7 @@ class GelpCustomButton extends StatelessWidget {
         hoverColor: Colors.black,
         onTap: onTap,
         child: Container(
+          height: 48,
           width: double.maxFinite,
           decoration: BoxDecoration(
             color: style.buttonColor,
