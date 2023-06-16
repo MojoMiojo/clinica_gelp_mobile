@@ -40,9 +40,6 @@ class _QuestionPageState extends State<QuestionPage> {
               padding:
                   const EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 24),
                   GelpProgressBar(
