@@ -27,10 +27,12 @@ class _GelpRadiusFieldState extends State<GelpRadiusField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.style.cardHeight,
-      width: double.infinity,
+      constraints: BoxConstraints(
+        minWidth: double.maxFinite,
+        minHeight: widget.style.cardHeight ?? 0,
+      ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(widget.style.radius),
         border: Border.all(
           color: widget.isSelected
               ? widget.style.selectedColor
@@ -70,9 +72,11 @@ class _GelpRadiusFieldState extends State<GelpRadiusField> {
                     : const SizedBox.shrink(),
               ),
               const SizedBox(width: 12),
-              Text(
-                widget.text,
-                style: widget.style.textStyle,
+              Flexible(
+                child: Text(
+                  widget.text,
+                  style: widget.style.textStyle,
+                ),
               ),
             ],
           ),

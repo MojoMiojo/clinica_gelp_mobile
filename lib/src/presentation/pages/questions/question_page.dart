@@ -40,6 +40,7 @@ class _QuestionPageState extends State<QuestionPage> {
               padding:
                   const EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 24),
                   GelpProgressBar(
@@ -49,7 +50,6 @@ class _QuestionPageState extends State<QuestionPage> {
                   Text(
                     state.actualQuestion.question,
                     style: GelpTextStyles.kPrimaryTitle,
-                    maxLines: 4,
                   ),
                   const SizedBox(height: 8),
                   const Text(
