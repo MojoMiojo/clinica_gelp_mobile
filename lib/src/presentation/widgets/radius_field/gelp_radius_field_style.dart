@@ -7,8 +7,9 @@ class GelpRadiusFieldStyle {
   final Color disabledRadioColor;
   final Color disabledBorderColor;
   final Color pointerColor;
-  final double cardHeight;
+  final double? cardHeight;
   final double radioSize;
+  final double radius;
   final TextStyle textStyle;
 
   const GelpRadiusFieldStyle({
@@ -18,6 +19,7 @@ class GelpRadiusFieldStyle {
     this.pointerColor = Colors.white,
     this.cardHeight = 48,
     this.radioSize = 26,
+    this.radius = 8,
     this.textStyle = GelpTextStyles.kSecondaryButton,
   });
 
@@ -28,6 +30,7 @@ class GelpRadiusFieldStyle {
     Color? pointerColor,
     double? cardHeight,
     double? radioSize,
+    double? radius,
     TextStyle? textStyle,
   }) {
     return GelpRadiusFieldStyle(
@@ -37,6 +40,7 @@ class GelpRadiusFieldStyle {
       pointerColor: pointerColor ?? this.pointerColor,
       cardHeight: cardHeight ?? this.cardHeight,
       radioSize: radioSize ?? this.radioSize,
+      radius: radius ?? this.radius,
       textStyle: textStyle ?? this.textStyle,
     );
   }
