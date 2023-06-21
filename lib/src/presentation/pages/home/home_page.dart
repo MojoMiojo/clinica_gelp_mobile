@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
                 final isCpfValid = _cpfFieldKey.currentState!.validate();
                 if (isNameValid && isPhoneValid && isCpfValid) {
                   _onConfirm(context);
+                  
                 }
               },
             ),
