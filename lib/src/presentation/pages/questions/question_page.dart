@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gelp_questionnaire/src/presentation/pages/home/home_page.dart';
 import 'package:gelp_questionnaire/src/presentation/utils/gelp_colors.dart';
 import 'package:gelp_questionnaire/src/presentation/utils/gelp_images.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/questions/question_state.dart';
@@ -151,7 +152,12 @@ class _QuestionPageState extends State<QuestionPage> {
                     text: 'Novo questionário',
                     onTap: () {
                       if (Navigator.canPop(context)) {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
                       }
                     },
                   ),
