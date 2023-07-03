@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gelp_questionnaire/src/presentation/utils/gelp_colors.dart';
 import 'package:gelp_questionnaire/src/presentation/utils/gelp_images.dart';
 
@@ -40,9 +41,8 @@ class GelpImageAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       title: Padding(
         padding: style.padding,
-        child: Image.asset(
-          GelpConstants.unaLogoPNG,
-          fit: BoxFit.cover,
+        child: SvgPicture.asset(
+          GelpConstants.unaLogoSVG,
         ),
       ),
     );
