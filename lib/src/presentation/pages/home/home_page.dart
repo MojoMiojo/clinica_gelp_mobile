@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     const horizontalPadding = 16.0;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: const GelpImageAppBar(),
       body: Padding(
@@ -98,7 +99,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(height: 48),
             const Spacer(),
             CheckBoxWidget(
                 isConfirmed: isCheckBoxConfirmed,
@@ -140,15 +140,19 @@ class _HomePageState extends State<HomePage> {
                           },
                         ));
                   }
-                }),
-            const SizedBox(height: 24),
+              },
+            ),
+            const SizedBox(height: 16),
             GelpCustomButton(
               text: 'Confirmar',
               onTap: () {
                 final isNameValid = _nameFieldKey.currentState!.validate();
                 final isPhoneValid = _phoneFieldKey.currentState!.validate();
                 final isCpfValid = _cpfFieldKey.currentState!.validate();
-                if (isNameValid && isPhoneValid && isCpfValid) {
+                if (isNameValid &&
+                    isPhoneValid &&
+                    isCpfValid &&
+                    isCheckBoxConfirmed) {
                   _navigateTo(context, const QuestionPage());
                 } else {
                   setState(() {
