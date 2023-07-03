@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gelp_questionnaire/src/presentation/pages/questions/question_page.dart';
+import 'package:gelp_questionnaire/src/presentation/pages/web_view_page.dart';
 import 'package:gelp_questionnaire/src/presentation/stores/home/home_cubit.dart';
+import 'package:gelp_questionnaire/src/presentation/utils/gelp_colors.dart';
 import 'package:gelp_questionnaire/src/presentation/utils/gelp_text_styles.dart';
+import 'package:gelp_questionnaire/src/presentation/widgets/check_box_widget.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/text_field/gelp_text_field.dart';
 import 'package:gelp_questionnaire/src/presentation/widgets/widgets.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +28,9 @@ class _HomePageState extends State<HomePage> {
   late String cpfText;
   final _cpfFieldKey = GlobalKey<FormState>();
 
+  bool isCheckBoxConfirmed = false;
+  bool mustCheckUseTerm = false;
+  
   @override
   void initState() {
     super.initState();
@@ -93,6 +100,48 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 48),
             const Spacer(),
+            CheckBoxWidget(
+                isConfirmed: isCheckBoxConfirmed,
+                text: Text(
+                  'Concordo que li e aceitei os termos de uso.',
+                  style: mustCheckUseTerm
+                      ? GelpTextStyles.kUseTermText
+                          .copyWith(color: GelpColors.primary)
+                      : GelpTextStyles.kUseTermText,
+                ),
+                onTap: (_) {
+                  if (isCheckBoxConfirmed) {
+                    setState(() {
+                      isCheckBoxConfirmed = !isCheckBoxConfirmed;
+                    });
+                  } else {
+                    _navigateTo(
+                        context,
+                        WebViewPage(
+                          onAccept: (value) {
+                            setState(() {
+                              isCheckBoxConfirmed = value;
+                              mustCheckUseTerm = false;
+                            });
+                          },
+                          onError: (WebResourceError e) {
+                            if (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            }
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                elevation: 0.8,
+                                showCloseIcon: true,
+                                duration: const Duration(seconds: 5),
+                                closeIconColor: GelpColors.primary,
+                                content: Text('Ops! ${e.description} '),
+                              ),
+                            );
+                          },
+                        ));
+                  }
+                }),
+            const SizedBox(height: 24),
             GelpCustomButton(
               text: 'Confirmar',
               onTap: () {
@@ -100,8 +149,11 @@ class _HomePageState extends State<HomePage> {
                 final isPhoneValid = _phoneFieldKey.currentState!.validate();
                 final isCpfValid = _cpfFieldKey.currentState!.validate();
                 if (isNameValid && isPhoneValid && isCpfValid) {
-                  _onConfirm(context);
-                  
+                  _navigateTo(context, const QuestionPage());
+                } else {
+                  setState(() {
+                    mustCheckUseTerm = true;
+                  });
                 }
               },
             ),
@@ -112,12 +164,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _onConfirm(BuildContext context) {
+  void _navigateTo(BuildContext context, Widget page) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (BuildContext context) {
-          return const QuestionPage();
+          return page;
         },
       ),
     );

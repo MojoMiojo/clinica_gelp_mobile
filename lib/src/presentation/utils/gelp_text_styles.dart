@@ -8,6 +8,7 @@ class GelpTextStyles {
   final TextStyle secondaryButton;
   final TextStyle fieldName;
   final TextStyle hintTextField;
+  final TextStyle useTermText;
 
   const GelpTextStyles({
     required this.primaryTitles,
@@ -16,6 +17,7 @@ class GelpTextStyles {
     required this.secondaryButton,
     required this.fieldName,
     required this.hintTextField,
+      required this.useTermText
   });
 
   static const kPrimaryTitle = TextStyle(
@@ -66,5 +68,13 @@ class GelpTextStyles {
     fontWeight: FontWeight.w400,
     fontSize: 14,
     color: Colors.grey,
+  );
+
+  static const kUseTermText = TextStyle(
+    fontFamily: 'Roboto',
+    decoration: TextDecoration.none,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    color: Colors.black87,
   );
 }
