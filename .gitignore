@@ -35,7 +35,6 @@
 /ios/build/*
 ./ios/build/
 android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
-android/local.properties
 ios/Flutter/flutter_export_environment.sh
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.h
