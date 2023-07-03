@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.clinica_gelp_mobile">
    <application
-        android:label="clinica_gelp_mobile"
+        android:label="Questionário Socioeconômico"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
