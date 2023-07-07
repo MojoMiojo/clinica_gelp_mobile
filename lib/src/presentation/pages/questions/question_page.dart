@@ -146,8 +146,14 @@ class _QuestionPageState extends State<QuestionPage> {
                     "Obrigado pela participação!",
                     style: GelpTextStyles.kPrimarySubtitle,
                   ),
-                  const SizedBox(height: 24),
                   const Spacer(),
+                  GelpCustomButton(
+                    text: 'Excel',
+                    onTap: () {
+                      _questionCubit.createExcel();
+                    },
+                  ),
+                  const SizedBox(height: 24),
                   GelpCustomButton(
                     text: 'Novo questionário',
                     onTap: () {

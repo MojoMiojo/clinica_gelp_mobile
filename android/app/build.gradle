@@ -47,8 +47,8 @@ android {
         applicationId "com.mojomiojo.gelp_social_questionnaire"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion localProperties.getProperty('flutter.minSdkVersion').toInteger()
+        minSdkVersion 20
+        targetSdkVersion 30
         versionCode localProperties.getProperty('flutter.targetSdkVersion').toInteger()
         versionName flutterVersionName
     }

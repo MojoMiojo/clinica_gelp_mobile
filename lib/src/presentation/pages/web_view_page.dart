@@ -26,7 +26,9 @@ class _WebViewPageState extends State<WebViewPage> {
   void initState() {
     super.initState();
 
-    const useTermURL = 'https://forms.gle/4UYqJATCNxokn82z8';
+    const useTermURL =
+        'https://docs.google.com/forms/d/e/1FAIpQLSeNj2WXz12-xD3L4r-rLvfBTc7aSP3-Kpqx6IZoSPHI6PSUiQ/viewform';
+    // const useTermURL = 'https://www.google.com.br/';
     const acceptedURL =
         'https://docs.google.com/forms/d/e/1FAIpQLSeNj2WXz12-xD3L4r-rLvfBTc7aSP3-Kpqx6IZoSPHI6PSUiQ/formResponse';
 

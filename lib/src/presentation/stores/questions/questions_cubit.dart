@@ -1,3 +1,4 @@
+import 'package:gelp_questionnaire/src/domain/excel_socioeconomic/use_case/create_excel_file_use_case.dart';
 import 'package:gelp_questionnaire/src/domain/socioeconomic/model/socioeconomic_question_model.dart';
 import 'package:gelp_questionnaire/src/domain/socioeconomic/use_case/get_socioeconomic_questions_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,9 +6,11 @@ import 'package:gelp_questionnaire/src/presentation/stores/questions/question_st
 
 class QuestionsCubit extends Cubit<QuestionsState> {
   final GetSocioeconomicQuestionsUseCase _getEconomicQuestionsUseCase;
+  final CreateExcelFileUseCase _createExcelFileUseCase;
 
   late List<SocioeconomicQuestionModel> _listOfQuestions;
   late Map<int, Answer> _userAnswers;
+  late Map<String, String> _userAnswersToExcel;
   late double _progressPercentage;
   late int _listLength;
 
@@ -15,6 +18,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
   QuestionsCubit(
     this._getEconomicQuestionsUseCase,
+    this._createExcelFileUseCase,
   ) : super(QuestionsInitialState());
 
   void init() {
@@ -22,6 +26,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     _listOfQuestions = _getEconomicQuestions();
     _listLength = _listOfQuestions.length;
     _userAnswers = {};
+    _userAnswersToExcel = {};
 
     Future.delayed(const Duration(seconds: 2), () {
       _emitQuestion();
@@ -44,8 +49,13 @@ class QuestionsCubit extends Cubit<QuestionsState> {
         _questionIndex == 0,
       ));
     } else {
+      createExcel();
       emit(QuestionsFinishedState(_progressPercentage));
     }
+  }
+
+  void createExcel() {
+    _createExcelFileUseCase(fileName: 'Mojo', answersMap: _userAnswersToExcel);
   }
 
   void goToNextQuestion() {
@@ -72,6 +82,8 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
   void setAnswer(Answer answer) {
     _userAnswers[_questionIndex] = answer;
+    _userAnswersToExcel[_listOfQuestions[_questionIndex].question] =
+        answer.answer;
     _emitQuestion();
   }
 
