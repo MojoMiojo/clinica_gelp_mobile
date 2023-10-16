@@ -9,6 +9,8 @@ A new Flutter project for MSc student to collect socioeconomic data from people.
   <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/bf45b101-123e-407a-95e5-25ecca0266ec">
 </p>
 
+## Figma
+https://www.figma.com/file/Boe89mf3FZaRQd2IoZXfNT/Gelp-Mobile?type=design&node-id=0-1&mode=design&t=v9RVmjAZic4EhJWe-0
 
 ## Getting Started
 
@@ -22,3 +24,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+OBS:
+<img width="1440" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/f38a6e99-47db-4728-8982-a03178dfd8c7">
