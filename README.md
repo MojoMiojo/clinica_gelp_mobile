@@ -9,6 +9,14 @@ A new Flutter project for MSc student to collect socioeconomic data from people.
   <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/bf45b101-123e-407a-95e5-25ecca0266ec">
 </p>
 
+<p float="left">
+  <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/4f820980-970f-4fb8-910d-5b400b7244a0">
+  <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/4b06107b-97c3-4bc5-9e3a-71e29c4f091e">
+  <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/56326617-7bfc-4723-a615-ec606623683c">
+  <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/c2b2bbeb-cacc-46a1-8163-11a0b85188e6">
+  <img width="466" alt="image" src="https://github.com/MojoMiojo/clinica_gelp_mobile/assets/42383407/d4ea2528-a753-4a4d-8a9d-976d43e9276a">
+</p>
+
 ## Figma
 https://www.figma.com/file/Boe89mf3FZaRQd2IoZXfNT/Gelp-Mobile?type=design&node-id=0-1&mode=design&t=v9RVmjAZic4EhJWe-0
 
